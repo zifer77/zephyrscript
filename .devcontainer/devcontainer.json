@@ -1,0 +1,21 @@
+{
+  "name": "ZephyrScript Backend",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "lts" },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "pip install -r requirements.txt && chmod +x run.sh",
+  "forwardPorts": [8000, 5173],
+  "portsAttributes": {
+    "8000": { "label": "FastAPI", "onAutoForward": "notify" },
+    "5173": { "label": "Vite Preview", "onAutoForward": "notify" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-python.vscode-pylance"],
+      "settings": { "python.defaultInterpreterPath": "/usr/local/bin/python" }
+    }
+  }
+}
